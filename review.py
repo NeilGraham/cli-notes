@@ -11,7 +11,6 @@ from functions import input_manager as IM
 
 # NonLocal Modules
 import math
-import time
 import curses
 
 
@@ -37,8 +36,11 @@ def main(win, debug=False):
     # Highlighted Log (-1 means no log highlighted)
     highlight = -1
     # First run
-    first_run = True
+    first_render = True
+    # Number of times rendered screen
+    num_renders = 0
     while True:
+        num_renders += 1
 
         # Terminal Width and Height
         x, y = UI.term_dimensions()
@@ -70,8 +72,8 @@ def main(win, debug=False):
             logs_all, logs_chsn, weight_all, y_left, spacing_btwn, p_wdth, x)
 
         # If this is the first run, go through again
-        if first_run:
-            first_run = False
+        if first_render:
+            first_render = False
             continue
 
         # If highlight is out of range, set it back to nothing
@@ -84,7 +86,7 @@ def main(win, debug=False):
         # NEW STABLE
         UI.clear_screen(win)
         #'''
-        info_dict = {}
+        info_dict = {'num_renders':num_renders}
         info_dict['x'] = x
         if highlight >= 0:
             info_dict['bump_count'] = logs_chsn[highlight][2]
@@ -148,7 +150,7 @@ def main(win, debug=False):
         elif key == 'KEY_RIGHT' or key == 'KEY_LEFT':
             if highlight >= -1:
                 logs_chsn = logs_chsn[log_end:]
-                first_run = True
+                first_render = True
                 continue
         elif key == 'KEY_BACKSPACE' or ord(key) == 127:
             log_typd = log_typd[:-1]

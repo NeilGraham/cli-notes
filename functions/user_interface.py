@@ -38,8 +38,11 @@ def print_header(win, position, name, x):
     new_line(win)
 
 def print_divider(win, x):
-    win.addstr('  ' + '-' * (x - 4))
-    new_line(win)
+    try:
+        win.addstr('  ' + '-' * (x - 4))
+        new_line(win)
+    except:
+        pass
 
 def print_cursor(win):
     win.addstr('_', curses.A_BLINK)
@@ -226,7 +229,11 @@ def divide_evenly(lines):
 #   _____________________________________________________________________   #
 
 def new_line(win):
-    win.addstr('\n')
+    try:
+        win.addstr('\n')
+    except:
+        pass
+        
 
 global name
 
