@@ -3,8 +3,8 @@
 #    Reads and writes data to the data folder
 
 # Local Modules
-import file_manager as FM
-import logical_procedures as LP
+from . import file_manager as FM
+from . import logical_procedures as LP
 
 # NonLocal Modules
 import datetime

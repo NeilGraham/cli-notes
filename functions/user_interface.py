@@ -4,8 +4,8 @@
 
 
 # Local Modules
-import logical_procedures as LP
-import data_manager as DM
+from . import logical_procedures as LP
+from . import data_manager as DM
 
 # NonLocal Modules
 import subprocess

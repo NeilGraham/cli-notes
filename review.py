@@ -4,12 +4,10 @@
 
 
 # Local Modules
-import sys
-sys.path.insert(0, 'functions')
-import data_manager as DM
-import logical_procedures as LP
-import user_interface as UI
-import input_manager as IM
+from functions import data_manager as DM
+from functions import logical_procedures as LP
+from functions import user_interface as UI
+from functions import input_manager as IM
 
 # NonLocal Modules
 import math
